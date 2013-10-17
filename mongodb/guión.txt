@@ -1,0 +1,22 @@
+# ver todos los documentos
+> db.numeros.find()
+
+# ver una
+db.numeros.findOne()
+
+# consultar
+db.numeros.find({x:1}).pretty()
+
+# borrar
+db.numeros.remove({x:1})
+
+#actualizar
+> a = db.numeros.findOne()
+{ "_id" : ObjectId("525f8d14a549437ae9e8d27f"), "x" : 0, "y" : 0 }
+> a
+{ "_id" : ObjectId("525f8d14a549437ae9e8d27f"), "x" : 0, "y" : 0 }
+> a.z = 0
+0
+> db.numeros.save(a)
+>
+
