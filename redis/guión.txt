@@ -1,0 +1,60 @@
+$ redis-cli
+
+#Probamos si estamos conectados escribiendo
+redis 127.0.0.1:6379> PING
+PONG
+
+#Consultamos la ayuda
+redis 127.0.0.1:6379> help
+redis-cli 2.6.13
+Type: "help @<group>" to get a list of commands in <group>
+      "help <command>" for help on <command>
+      "help <tab>" to get a list of possible help topics
+      "quit" to exit
+
+# Agregar un juego de llave-valor
+redis 127.0.0.1:6379> SET cayapa cumaná
+
+# consultar llave
+redis 127.0.0.1:6379> GET cayapa
+"cuman\xc3\xa1"
+
+# agregar multiples llaves-valores
+redis 127.0.0.1:6379> MSET redis http://redis.io voldemort
+http://www.project-voldemort.com/ riak http://basho.com/riak/
+
+# consultar múltiples llaves valor
+redis 127.0.0.1:6379> mget riak redis voldemort
+1) "http://basho.com/riak/"
+2) "http://redis.io"
+3) "http://www.project-voldemort.com/"
+
+# ver llaves disponibles
+redis 127.0.0.1:6379> keys *
+1) "redmon:redis:127.0.0.1:6379:stats"
+2) "voldemort"
+3) "cayapa"
+4) "user:1000"
+5) "redis"
+6) "riak"
+
+# borrar llaves
+redis 127.0.0.1:6379> del riak redis cayapa voldemort
+
+# trabajando con valores numéricos
+redis 127.0.0.1:6379> set contador 42
+redis 127.0.0.1:6379> incr contador
+redis 127.0.0.1:6379> incr contador
+redis 127.0.0.1:6379> incrby contador 46
+redis 127.0.0.1:6379> decr contador
+redis 127.0.0.1:6379> decr contador
+redis 127.0.0.1:6379> decrby contador 48
+
+# trabajando con hashes (bultos o fajos)
+
+redis 127.0.0.1:6379> HSET ponente nombre "Carlos Gustavo"
+redis 127.0.0.1:6379> HSET ponente ponencia "BDL desde 40000 pies de altura"
+redis 127.0.0.1:6379> HSET ponente fecha "17-10-2013"
+redis 127.0.0.1:6379> HKEYS ponente
+redis 127.0.0.1:6379> HGETALL
+
